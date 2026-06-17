@@ -8,10 +8,15 @@ ui-debug.log
 # Dependencies
 node_modules/
 
-# Environment / secrets
+# Environment / secrets — JANGAN PERNAH commit kunci Firebase Admin
 .env
 .env.local
 *serviceAccountKey*.json
+*serviceAccount*.json
+*-adminsdk-*.json
+quparkir-firebase-adminsdk-*.json
+serviceAccount.js
+serviceAccount.json
 
 # OS / editor
 Thumbs.db
