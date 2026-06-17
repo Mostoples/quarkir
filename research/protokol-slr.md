@@ -123,19 +123,19 @@ INCLUDED
 
 ## 6. Titik Awal — Referensi Proposal (akan diverifikasi)
 
-Studi inti dari proposal yang menjadi *seed* (status verifikasi diisi saat eksekusi: judul, penulis, tahun, DOI nyata):
+Studi inti dari proposal yang menjadi *seed*. **Status verifikasi (diperiksa 2026-06-17 via WebSearch + Crossref):**
 
-| Seed | Sitasi proposal | Status verifikasi |
-|------|------------------|-------------------|
-| S1 | Mufaqih dkk. (2020) | ⏳ akan diverifikasi |
-| S2 | Billqis & Suryawati (2022) | ⏳ akan diverifikasi |
-| S3 | Rachmawati & Fitriyanti (2021) | ⏳ akan diverifikasi |
-| S4 | Zhafirah (2023) | ⏳ akan diverifikasi |
-| S5 | Lestari (2023) | ⏳ akan diverifikasi |
-| S6 | Pradhan (2025) | ⏳ akan diverifikasi |
-| S7 | Shao (2025) | ⏳ akan diverifikasi |
+| Seed | Sitasi terverifikasi (judul · penulis · sumber · tahun) | DOI / URL | Status |
+|------|---------------------------------------------------------|-----------|--------|
+| S1 | *Applying smart parking system with internet of things (IoT) design* · Mufaqih, M. S., Kaburuan, E. R., & Wang, G. · IOP Conf. Series: Materials Science and Engineering, 725(1):012095 · 2020 | `10.1088/1757-899X/725/1/012095` | ✅ terverifikasi |
+| S2 | *Implementasi Program Parkir Elektronik (E-Parkir) di Kota Surakarta* · Billqis, A., & Suryawati, R. · Jurnal Mahasiswa Wacana Publik (UNS) · 2022 | [view/66553](https://jurnal.uns.ac.id/wacana-publik/article/view/66553) | ✅ terverifikasi |
+| S3 | *Analysis of the E-Government Initiative at Local Government Level in Bandung City, Indonesia* · Rachmawati, T., & Fitriyanti, K. D. · Jurnal Ilmu Sosial dan Ilmu Politik (UGM), 25(1) · 2021 | `10.22146/jsp.58966` | ✅ terverifikasi |
+| S4 | *Institutional Arrangement Approach on e-Parking Innovation in Surabaya City, Indonesia* · Zhafirah, A. A., Hati, R. P., & Roziqin, A. · Jurnal Transformative Policy, 15(1) · 2023 | `10.33701/jtp.v15i1.2664` | ✅ terverifikasi |
+| S5 | *Penerapan elektronik parkir (e-parkir) di kota Surakarta* · Lestari, Indrawati, & Subarno · JIKAP, 7(2):154–162 · 2023 | [view/60681](https://jurnal.uns.ac.id/JIKAP/article/view/60681) | ✅ terverifikasi |
+| S6 | *Advanced IoT-integrated parking systems with automated license plate recognition and payment management* · Pradhan, G., Prusty, M. R., Negi, V. S., & Chinara, S. · Scientific Reports · 2025 | `10.1038/s41598-025-86441-w` | ✅ terverifikasi |
+| S7 | *Design of a Parking Space Guidance System for Parking Lots* · Shao, C. · 2025 5th Int. Conf. on Electronic Information Engineering and Computer Technology (EIECT) · 2025 | `10.1109/eiect68017.2025.11332183` | ⚠️ kandidat (cocok nama+tahun+topik; perlu konfirmasi sitasi asli proposal) |
 
-> **Integritas akademik:** setiap seed diverifikasi keberadaannya (judul/penulis/tahun/DOI) via WebSearch/WebFetch sebelum dikutip. Seed yang tidak terverifikasi ditandai dan tidak digunakan sebagai klaim.
+> **Integritas akademik:** S1–S6 terverifikasi keberadaannya (judul/penulis/tahun/DOI nyata). **S7 (Shao 2025)** baru kecocokan kandidat — perlu konfirmasi pemilik proyek terhadap daftar pustaka proposal sebelum dikutip sebagai klaim.
 
 ---
 

@@ -23,6 +23,7 @@ Aturan penulisan log (WAJIB dibaca — mencegah konflik git antar device):
 ## 🔬 Riset (Device A — Peneliti / Systematic Literature Review)
 
 <!-- Tulis entri terbaru tepat di bawah baris ini -->
+- [2026-06-17 18:35] (Device A) Langkah 1 SLR selesai: **7 seed proposal diverifikasi** (6 ✅ nyata + DOI, 1 ⚠️ kandidat = Shao 2025 perlu konfirmasi). Hasil direkam di `research/protokol-slr.md §6`. Lanjut ke pencarian basis data (langkah 2). — branch: `riset` — status: 🚧wip
 - [2026-06-17 18:20] (Device A) Setup branch `riset` + folder `research/`. Protokol SLR formal disusun di `research/protokol-slr.md` (RQ1–4, string pencarian 6 basis data, kriteria inklusi/eksklusi, alur PRISMA, template ekstraksi, quality appraisal, rencana eksekusi). Menunggu persetujuan pemilik sebelum eksekusi pencarian. — branch: `riset` — status: 🚧wip
 - [2026-06-17] (Device A) Protokol SLR disiapkan di docs/RESEARCH.md (lihat). Belum mulai screening. — branch: `riset` — status: 🚧wip
 
