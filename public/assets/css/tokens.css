@@ -1,0 +1,37 @@
+/* ============================================================
+   QuParkir — Design Tokens (palet BIRU, acuan lampiran) + 3 mode UI
+   ============================================================ */
+:root{
+  --blue-950:#0b1b4d; --blue-900:#13257a; --blue-800:#1e3a8a;
+  --blue-700:#1d4ed8; --blue-600:#2563eb; --blue-500:#3b82f6;
+  --blue-400:#60a5fa; --blue-300:#93c5fd; --blue-200:#bfdbfe;
+  --cyan-500:#06b6d4; --cyan-400:#22d3ee; --sky:#e6f2ff;
+  --gold:#f6c84c; --success:#22c55e; --warn:#f59e0b; --danger:#ef4444;
+  --ink:#0b1220; --muted:#5b6b8c;
+  --r-lg:22px; --r-md:16px; --r-sm:12px;
+
+  /* token yang dioverride per-mode */
+  --app-bg:#f3f7ff;
+  --card:#ffffff;
+  --header:linear-gradient(135deg,#1d4ed8 0%, #2563eb 45%, #06b6d4 120%);
+  --tile:#eef4ff;
+  --text:#0b1220; --text-soft:#5b6b8c;
+  --line:rgba(10,23,80,.08);
+  --neu-shadow:6px 6px 14px rgba(10,23,80,.14), -6px -6px 14px rgba(255,255,255,.9);
+  --panel-blur:16px;
+  --aurora-opacity:1;
+}
+
+/* GLASS */
+body[data-mode="glass"]{
+  --app-bg:rgba(255,255,255,.10); --card:rgba(255,255,255,.16); --tile:rgba(255,255,255,.18);
+  --text:#eaf2ff; --text-soft:#c7d6f5; --line:rgba(255,255,255,.18);
+  --neu-shadow:none; --aurora-opacity:1;
+}
+/* NEUMORPH */
+body[data-mode="neumorph"]{
+  --app-bg:#e7eefb; --card:#e7eefb; --tile:#e7eefb;
+  --header:linear-gradient(135deg,#3b6fe0,#3aa6e0);
+  --text:#16306b; --text-soft:#5b6b8c; --line:rgba(10,23,80,.06);
+  --aurora-opacity:0;
+}

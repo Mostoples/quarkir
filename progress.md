@@ -30,7 +30,8 @@ Aturan penulisan log (WAJIB dibaca — mencegah konflik git antar device):
 ## 💻 Developer (Device B — Full-stack)
 
 <!-- Tulis entri terbaru tepat di bawah baris ini -->
-- [2026-06-17] (Device B) Arsitektur & data model disusun di docs/ARCHITECTURE.md. Sample UI dibuat di design/sample-ui/. Menunggu approval. — branch: `dev` — status: 🚧wip
+- [2026-06-17] (Device B) **APP FULL-STACK SELESAI (batch 1) di public/.** Shell + design system (palet biru, 3 mode), router hash, data layer (DEMO localStorage + Firebase Firestore satu antarmuka), auth (Google/Email/Anonymous), peta OSM. Halaman: login, home, cari, kendaraan, check-in (anti double-parking), status realtime + e-ticket QR + smart tarif, checkout+struk, riwayat, akun (top up + ganti peran), petugas (verifikasi), admin (income/kapasitas/rekap). firestore.rules diperketat. App jalan tanpa config (mode DEMO). 19 modul lolos node --check. — branch: `dev` — status: ✅done
+- [2026-06-17] (Device B) TODO berikutnya: isi js/config.js dgn Web SDK config quparkir untuk aktifkan Firebase asli; integrasi ikon Lottie Flaticon; pembayaran QRIS nyata. — branch: `dev` — status: 🚧wip
 
 ---
 

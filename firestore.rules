@@ -1,12 +1,61 @@
 rules_version = '2';
 
+// ============================================================
+// QuParkir — Firestore Security Rules
+// Aktif saat app memakai Firebase (config.js terisi). Mode DEMO
+// (localStorage) tidak menyentuh Firestore sama sekali.
+// ============================================================
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Default: tolak semua akses. Sesuaikan aturan di bawah ini
-    // sesuai kebutuhan aplikasi QuParkir sebelum production.
-    match /{document=**} {
-      allow read, write: if false;
+    function isSignedIn() { return request.auth != null; }
+    function uid() { return request.auth.uid; }
+    function roleOf(u) {
+      return exists(/databases/$(database)/documents/users/$(u))
+        ? get(/databases/$(database)/documents/users/$(u)).data.role
+        : 'pelanggan';
+    }
+    function isAdmin() { return isSignedIn() && roleOf(uid()) == 'admin'; }
+    function isPetugas() { return isSignedIn() && roleOf(uid()) in ['petugas', 'admin']; }
+
+    // Profil & kendaraan: hanya pemilik
+    match /users/{u} {
+      allow read, write: if isSignedIn() && uid() == u;
+      match /vehicles/{v} {
+        allow read, write: if isSignedIn() && uid() == u;
+      }
+    }
+
+    // Lokasi parkir: publik dibaca; hanya admin yang mengubah kapasitas
+    // (occupied di-update via transaksi check-in/out oleh pengguna ter-autentikasi)
+    match /locations/{id} {
+      allow read: if true;
+      allow create, delete: if isAdmin();
+      allow update: if isAdmin()
+        || (isSignedIn()
+            && request.resource.data.diff(resource.data).affectedKeys()
+                 .hasOnly(['occMotor', 'occCar']));
+    }
+
+    // Sesi parkir (e-ticket)
+    match /sessions/{id} {
+      allow read: if isSignedIn() && (resource.data.uid == uid() || isPetugas());
+      allow create: if isSignedIn() && request.resource.data.uid == uid()
+                    && request.resource.data.status == 'active';
+      // pemilik boleh checkout; petugas boleh verifikasi
+      allow update: if isSignedIn() && (resource.data.uid == uid() || isPetugas());
+    }
+
+    // Transaksi
+    match /transactions/{id} {
+      allow read: if isSignedIn() && (resource.data.uid == uid() || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.uid == uid();
+    }
+
+    // Petugas
+    match /officers/{id} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
     }
   }
 }
