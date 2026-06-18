@@ -17,12 +17,19 @@ Aturan penulisan log (WAJIB dibaca — mencegah konflik git antar device):
 - [2026-06-17] (Setup) Repo GitHub `Mostoples/quarkir` + Firebase project `quparkir` terhubung. Hosting, Firestore, Auth (Google/Email/Anonymous) aktif di console. — status: ✅done
 - [2026-06-17] (Setup) Batch plan dua-device, SOP workflow, dan sample UI dibuat. — status: ✅done
 - [2026-06-17] (Setup) **Sample UI DISETUJUI.** Home direvisi mengikuti layout acuan PARKEE (header sapaan+poin, kartu saldo QuPay, grid menu, carousel promo, kartu terdekat, bottom nav + FAB scan) dengan palet biru + multimode. **Gate terbuka → full-stack build boleh dimulai.** — status: ✅done
+- [2026-06-17] (Device A → handoff) **SLR SELESAI** (PRISMA, 34 studi inti). **Tabel Gap→Fitur untuk Developer** (detail: `research/gap-fitur.md`):
+  - **G1 Integrasi end-to-end & kemandirian** → Dashboard Admin realtime + Firestore `onSnapshot` (hindari vendor-lock) · Modul Admin A/H. 🔴
+  - **G2 Kota menengah & adopsi** → E-ticket QR + check-in/out + live slot + smart tarif · Modul Pelanggan C/D/F/G/H. 🔴
+  - **G3 Verifikasi petugas** → QR identitas petugas (KTA) + status verifikasi · Modul Petugas A/B/D/E. 🟠
+  - **G4 Anti-fraud + transparansi** → Anti double-parking + validasi checkout + e-ticket unik + monitoring income · Modul Pelanggan E/F, Petugas F, Admin A/E. 🔴
+  - **Prinsip novelty (jangan dipecah):** kesatuan end-to-end (transaksi lapangan ⇄ anti-fraud ⇄ transparansi pemerintah realtime) untuk kota menengah. — status: ✅done
 
 ---
 
 ## 🔬 Riset (Device A — Peneliti / Systematic Literature Review)
 
 <!-- Tulis entri terbaru tepat di bawah baris ini -->
+- [2026-06-17 19:10] (Device A) **SELURUH JOBDESK SLR SELESAI.** Ekstraksi teks-lengkap 5 studi prioritas (E18/E19/E30/E33/E34, abstrak terverifikasi). Gap & novelty FINAL di `docs/RESEARCH.md §6–§7`. Naskah **BAB I** (`research/bab1-pendahuluan.md`) & **BAB II** (`research/bab2-tinjauan-pustaka.md`, daftar pustaka APA 13 referensi terverifikasi). Tabel **Gap→Fitur** (`research/gap-fitur.md`) + ringkasan diserahkan ke section Shared untuk Developer B. Deliverable 1–6 ✅. — branch: `riset` — status: ✅done
 - [2026-06-17 18:50] (Device A) Langkah 2–3 SLR: korpus nyata dibangun via Crossref (120 terambil → 114 unik). Screening reproducible → **CORE 27 · CONTEXT 31 · EXCLUDED 56**. +7 seed = **34 studi inti**. PRISMA angka nyata di `research/prisma.md`; korpus+screening di `research/korpus-crossref.md`; ekstraksi 7 seed (penuh) + 27 CORE (metadata) di `research/ekstraksi.md`. Berikutnya: teks-lengkap prioritas (E18/E19/E30/E31) lalu finalisasi gap & novelty. — branch: `riset` — status: 🚧wip
 - [2026-06-17 18:35] (Device A) Langkah 1 SLR selesai: **7 seed proposal diverifikasi** (6 ✅ nyata + DOI, 1 ⚠️ kandidat = Shao 2025 perlu konfirmasi). Hasil direkam di `research/protokol-slr.md §6`. Lanjut ke pencarian basis data (langkah 2). — branch: `riset` — status: 🚧wip
 - [2026-06-17 18:20] (Device A) Setup branch `riset` + folder `research/`. Protokol SLR formal disusun di `research/protokol-slr.md` (RQ1–4, string pencarian 6 basis data, kriteria inklusi/eksklusi, alur PRISMA, template ekstraksi, quality appraisal, rencana eksekusi). Menunggu persetujuan pemilik sebelum eksekusi pencarian. — branch: `riset` — status: 🚧wip

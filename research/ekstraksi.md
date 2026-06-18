@@ -68,8 +68,8 @@
 | E15 | PARKEASY: QR-based Real-Time Smart Parking Navigator (2026) | QR+realtime | RQ1 | perlu teks-lengkap |
 | E16 | IoT Smart Parking Industry 4.0 QR + real-time nav (2025) | IoT+QR | RQ1 | perlu teks-lengkap |
 | E17 | Technology Adoption & Human Interaction Smart Parking QR (2025) | QR+adopsi | RQ1/RQ2 | perlu teks-lengkap |
-| E18 | Implementation of SPS: Cashless Payment for Public Roadside (2024) | e-parking+cashless | RQ1/RQ2 | **prioritas** perlu teks-lengkap |
-| E19 | Optimization Samarinda Parking Retribution via e-Parking Innovation (2022) | e-parking+retribusi | RQ2/RQ4 | **prioritas** perlu teks-lengkap |
+| E18 | Implementation of SPS: Cashless Payment for Public Roadside (2024) | e-parking+cashless | RQ1/RQ2 | ✅ diekstraksi (B2) |
+| E19 | Optimization Samarinda Parking Retribution via e-Parking Innovation (2022) | e-parking+retribusi | RQ2/RQ4 | ✅ diekstraksi (B2) |
 | E20 | Potensi Retribusi Parkir PAD Medan Sebelum-Sesudah E-Parkir (2023) | e-parkir+retribusi | RQ2 | perlu teks-lengkap |
 | E21 | Smart Parking Computer Vision Spot Detection + IoT (2025) | CV+IoT | RQ1 | perlu teks-lengkap |
 | E22 | A Smart Real-Time Parking Control & Monitoring System (2023, Sensors) | IoT+realtime | RQ1/RQ3 | perlu teks-lengkap |
@@ -80,13 +80,45 @@
 | E27 | Smart Parking: Real-Time Parking Availability System (2025) | realtime | RQ1 | perlu teks-lengkap |
 | E28 | Prototype IoT Real-Time Smart Parking Monitoring (Polije, 2026) | IoT+realtime | RQ1 | perlu teks-lengkap |
 | E29 | Smart Parking Real-Time Slot Detection + Automated Gate (2025, Technologies) | CV+otomasi | RQ1 | perlu teks-lengkap |
-| E30 | Analysis Parking System via Electronic Parking Terminals (EPT) (2025) | EPT+e-parking | RQ2/RQ3 | **prioritas** perlu teks-lengkap |
-| E31 | Implementation Electronic-based Parking Retributions (E-Parking) Medan (2024) | e-parking+retribusi | RQ2/RQ4 | **prioritas** perlu teks-lengkap |
+| E30 | Analysis Parking System via Electronic Parking Terminals (EPT) (2025) | EPT+e-parking | RQ2/RQ3 | ✅ diekstraksi (B2) |
+| E31 | Implementation Electronic-based Parking Retributions (E-Parking) Medan (2024) | e-parking+retribusi | RQ2/RQ4 | abstrak tak tersedia di Crossref |
 | E32 | Economics of Smart Parking: Predictive Analytics Urban Parking Revenue (2025) | analitik+revenue | RQ4 | perlu teks-lengkap |
-| E33 | Implementation Electronic Parking Terminal (TPE) Policy (2023) | TPE+kebijakan | RQ2/RQ3 | perlu teks-lengkap |
-| E34 | Implementation E-Parking Mgmt Policy Braga, Bandung (2024) | e-parking+kebijakan | RQ2 | perlu teks-lengkap |
+| E33 | Implementation Electronic Parking Terminal (TPE) Policy (2023) | TPE+kebijakan | RQ2/RQ3 | ✅ diekstraksi (B2) |
+| E34 | Implementation E-Parking Mgmt Policy Braga, Bandung (2024) | e-parking+kebijakan | RQ2 | ✅ diekstraksi (B2) |
 
 > **Tahap berikutnya (eligibility):** baca teks-lengkap E18, E19, E30, E31 (prioritas — paling dekat ke isu transparansi retribusi & integrasi pemerintah), lalu lengkapi temuan/keterbatasan E08–E34.
+
+---
+
+## B2. Ekstraksi teks-lengkap — studi prioritas (temuan dari abstrak terverifikasi)
+
+### E18 · Lukito, Eko, Sulikah & Wundri (2024) — *Implementation of the Smart Parking System (SPS): Cashless Payment for Public Roadside Parking Fees in Surabaya City* · J. Governance and Administrative Reform · `10.20473/jgar.v5i2.61650`
+- **Temuan [S]:** Surabaya **baru** memperkenalkan pembayaran **non-tunai untuk parkir tepi jalan (TJU)** pada **2024** atas mandat Wali Kota; studi kualitatif menganalisis pengembangan & implementasi SPS dalam kerangka kebijakan parkir TJU.
+- **Keterbatasan [P]:** baru tahap pembayaran cashless & kebijakan; belum integrasi end-to-end ke dashboard pemerintah realtime maupun verifikasi identitas petugas.
+- **Relevansi:** RQ1/RQ2 — menegaskan parkir tepi jalan non-tunai masih sangat baru di kota besar Indonesia (2024).
+
+### E19 · Sipayung, B. (2022) — *Optimization of Samarinda City Parking Retribution Revenue Through e-Parking Innovation* · Formosa J. Multidisciplinary Research · `10.55927/fjmr.v1i2.578`
+- **Temuan [S]:** e-Parking ditujukan untuk parkir yang **aman, nyaman, transparan**, menerapkan **tarif progresif** agar menghindari sengketa petugas–masyarakat, **mengurangi praktik petugas/parkir ilegal**, dan menanggulangi **kebocoran retribusi**; efektivitas dinilai dengan teori Budiani.
+- **Keterbatasan [P]:** evaluasi kebijakan deskriptif; bukan rancangan sistem teknis e-ticket/QR per transaksi + dashboard.
+- **Relevansi:** RQ2/RQ4 — paling dekat dengan misi QuParkir (transparansi retribusi + anti parkir ilegal). Mendukung gap & rumusan masalah.
+
+### E30 · Hariwibowo, Handayani & Handayani (2025) — *Analysis of Parking System Development Using Electronic Parking Terminals (EPT) to Improve Services and Revenue in Jakarta* · Dinasti IJDBM · `10.38035/dijdbm.v6i6.5896`
+- **Temuan [S]:** EPT Dishub DKI Jakarta **bergantung pada sistem vendor asing** (French *Cale Web Office*/CWO); sejak **Mei 2021 CWO terganggu** → TPE tak bisa online, **gaji pegawai tertunda**, **pendapatan parkir turun**; kontribusi pajak parkir ke PAD hanya **0,99%** (2018–2021).
+- **Keterbatasan [P]:** menyorot kerapuhan ketergantungan vendor & integrasi; tidak menawarkan sistem alternatif terintegrasi-lokal.
+- **Relevansi:** RQ2/RQ3 — bukti kuat **gap integrasi/kemandirian sistem** & kerentanan vendor-lock.
+
+### E31 · (E-Parking Medan, 2024) — `10.30596/almuhtarifin.v3i2.19626`
+- **Status:** abstrak tidak tersedia di Crossref; metadata terverifikasi. Temuan menunggu akses teks-lengkap (judul: analisis implementasi retribusi e-parking terhadap pendapatan daerah Medan).
+
+### E33 · Mulyati, Y. & Surtiani, A. (2023) — *Implementation of Electronic Parking Terminal (TPE) Policy in the BLUD Parking Dept., Bandung* · Sustainability (STPP) · `10.30631/sdgs.v2i1.1303`
+- **Temuan [S]:** Pemkot Bandung menerapkan **TPE** untuk menekan masalah parkir & menaikkan retribusi; namun **TPE belum optimal — masyarakat masih memilih membayar ke petugas** (perilaku tunai bertahan).
+- **Keterbatasan [P]:** lensa kebijakan; tidak mengatasi akar adopsi via desain sistem (insentif/UX/verifikasi).
+- **Relevansi:** RQ2/RQ4 — bukti **gap adopsi & kebocoran** meski teknologi sudah ada.
+
+### E34 · Fatmawati, Mulyati, Rusliadi & Aina (2024) — *Implementation of E-Parking Management Policy in Braga Area of Bandung City* · J. Ilmiah Ilmu Administrasi Publik · `10.26858/jiap.v13i2.59011`
+- **Temuan [S]:** implementasi kebijakan pengelolaan parkir di kawasan Braga **belum sepenuhnya efektif**; parkir masih mengganggu arus lalu lintas; analisis kualitatif (NVivo 12 Plus).
+- **Keterbatasan [P]:** fokus kebijakan kawasan; bukan solusi sistem terintegrasi.
+- **Relevansi:** RQ2 — konteks kegagalan/parsial implementasi e-parking kota.
 
 ---
 
