@@ -17,6 +17,8 @@ Aturan penulisan log (WAJIB dibaca — mencegah konflik git antar device):
 - [2026-06-17] (Setup) Repo GitHub `Mostoples/quarkir` + Firebase project `quparkir` terhubung. Hosting, Firestore, Auth (Google/Email/Anonymous) aktif di console. — status: ✅done
 - [2026-06-17] (Setup) Batch plan dua-device, SOP workflow, dan sample UI dibuat. — status: ✅done
 - [2026-06-17] (Setup) **Sample UI DISETUJUI.** Home direvisi mengikuti layout acuan PARKEE (header sapaan+poin, kartu saldo QuPay, grid menu, carousel promo, kartu terdekat, bottom nav + FAB scan) dengan palet biru + multimode. **Gate terbuka → full-stack build boleh dimulai.** — status: ✅done
+- [2026-06-19] (Deploy) QuParkir berhasil di-deploy ke Firebase Hosting. Firestore rules dan indexes aktif. URL: https://quparkir.web.app — status: ✅done
+- [2026-06-17] (Setup) Repo GitHub `Mostoples/quarkir` + Firebase project `quparkir` terhubung...
 
 ---
 
