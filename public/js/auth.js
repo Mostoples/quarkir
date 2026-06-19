@@ -9,20 +9,42 @@ export let Auth;
 
 function demoAuth() {
   const KEY = "quparkir_user_v1";
+  const ACC = "quparkir_accounts_v1";
   let user = JSON.parse(localStorage.getItem(KEY) || "null");
   const subs = new Set();
   const set = (u) => { user = u; u ? localStorage.setItem(KEY, JSON.stringify(u)) : localStorage.removeItem(KEY); subs.forEach(f => f(u)); };
+  const accounts = () => JSON.parse(localStorage.getItem(ACC) || "{}");
+  const saveAccounts = (a) => localStorage.setItem(ACC, JSON.stringify(a));
+  const hash = (s) => btoa(unescape(encodeURIComponent(s)));  // demo only, BUKAN hashing aman
   const mk = (over) => ({ uid: over.uid || "demo-" + randId(), name: "Pengguna QuParkir", role: "pelanggan", ...over });
   return {
     mode: "demo",
     current: () => user,
     onChange: (cb) => { subs.add(cb); cb(user); return () => subs.delete(cb); },
     async loginGoogle() { set(mk({ uid: "g-awigna", name: "Awigna", email: "awigna@gmail.com", provider: "google" })); },
-    async loginEmail(email) { set(mk({ uid: "e-" + btoa(email).slice(0, 6), name: email.split("@")[0], email, provider: "email" })); },
-    async register(email, _p, name) { set(mk({ uid: "e-" + btoa(email).slice(0, 6), name: name || email.split("@")[0], email, provider: "email" })); },
+    async loginEmail(email, password) {
+      const key = String(email).toLowerCase().trim();
+      const acc = accounts()[key];
+      if (!acc) throw new Error("Email belum terdaftar. Silakan daftar dulu.");
+      if (acc.pass !== hash(password)) throw new Error("Kata sandi salah.");
+      set(mk({ uid: acc.uid, name: acc.name, email: acc.email, role: acc.role || "pelanggan", provider: "email" }));
+    },
+    async register(email, password, name) {
+      const key = String(email).toLowerCase().trim();
+      if (!key || !password) throw new Error("Email & kata sandi wajib diisi.");
+      const a = accounts();
+      if (a[key]) throw new Error("Email sudah terdaftar. Silakan masuk.");
+      const acc = { uid: "e-" + randId(), name: name || key.split("@")[0], email: key, pass: hash(password), role: "pelanggan" };
+      a[key] = acc; saveAccounts(a);
+      set(mk({ uid: acc.uid, name: acc.name, email: acc.email, provider: "email" }));
+    },
     async loginAnon() { set(mk({ uid: "anon-" + randId(), name: "Tamu", provider: "anonymous", anon: true })); },
     async logout() { set(null); },
-    setRole(role) { if (user) set({ ...user, role }); },
+    setRole(role) {
+      if (!user) return;
+      set({ ...user, role });
+      const a = accounts(); if (user.email && a[user.email]) { a[user.email].role = role; saveAccounts(a); }
+    },
   };
 }
 

@@ -7,6 +7,7 @@ import { route, setNotFound, startRouter, render, current, go } from "./router.j
 import { $, $$, toast } from "./util.js";
 
 import loginPage from "./pages/login.js";
+import registerPage from "./pages/register.js";
 import homePage from "./pages/home.js";
 import cariPage from "./pages/cari.js";
 import kendaraanPage from "./pages/kendaraan.js";
@@ -34,14 +35,13 @@ function initModeSwitcher() {
 }
 
 // ---- chrome (tabbar) ----
-const TAB_ROUTES = ["#/home", "#/riwayat", "#/cari", "#/akun"];
+const AUTH_PAGES = ["#/login", "#/register"];
 function updateChrome() {
   const path = current();
   const u = window.__AUTH?.current();
   const tab = $("#tabbar");
-  const onLogin = path === "#/login";
-  tab.hidden = onLogin || !u;
-  $("#modefab").classList.toggle("hide", onLogin && !u ? false : false); // selalu tampil
+  const authPage = AUTH_PAGES.includes(path);
+  tab.hidden = authPage || !u;
   $$("#tabbar > button[data-go]").forEach(b => b.classList.toggle("active", b.dataset.go === path));
   $("#view").classList.toggle("noTab", tab.hidden);
 }
@@ -69,6 +69,7 @@ async function main() {
 
   // routes
   route("#/login", loginPage);
+  route("#/register", registerPage);
   route("#/home", guard(homePage));
   route("#/cari", guard(cariPage));
   route("#/kendaraan", guard(kendaraanPage));
@@ -87,8 +88,8 @@ async function main() {
   // reaktif: kalau status auth berubah, arahkan
   Auth.onChange((u) => {
     const path = current();
-    if (!u && path !== "#/login") go("#/login");
-    if (u && path === "#/login") go("#/home");
+    if (!u && !AUTH_PAGES.includes(path)) go("#/login");
+    if (u && AUTH_PAGES.includes(path)) go("#/home");
     updateChrome();
   });
 
