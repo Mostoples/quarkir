@@ -48,6 +48,20 @@ function demoAuth() {
   };
 }
 
+const FRIENDLY = {
+  "auth/invalid-credential": "Email atau kata sandi salah.",
+  "auth/wrong-password": "Kata sandi salah.",
+  "auth/user-not-found": "Email belum terdaftar. Silakan daftar dulu.",
+  "auth/email-already-in-use": "Email sudah terdaftar. Silakan masuk.",
+  "auth/weak-password": "Kata sandi minimal 6 karakter.",
+  "auth/invalid-email": "Format email tidak valid.",
+  "auth/popup-closed-by-user": "Popup ditutup sebelum selesai.",
+  "auth/network-request-failed": "Jaringan bermasalah. Coba lagi.",
+  "auth/unauthorized-domain": "Domain ini belum diizinkan untuk Google sign-in (cek Authorized domains).",
+  "auth/operation-not-allowed": "Metode login ini belum diaktifkan di Firebase Console.",
+};
+const friendly = (e) => { const err = new Error(FRIENDLY[e.code] || e.message || "Gagal"); err.code = e.code; return err; };
+
 async function firebaseAuth() {
   const [{ initializeApp, getApps }, a] = await Promise.all([
     import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"),
@@ -55,19 +69,39 @@ async function firebaseAuth() {
   ]);
   const app = getApps()[0] || initializeApp(firebaseConfig);
   const auth = a.getAuth(app);
-  const { GoogleAuthProvider, signInWithPopup, signInAnonymously, onAuthStateChanged,
-    signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut } = a;
+  const { GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult,
+    signInAnonymously, onAuthStateChanged, signInWithEmailAndPassword,
+    createUserWithEmailAndPassword, updateProfile, signOut } = a;
+
+  // selesaikan login Google via redirect (untuk mobile/popup diblokir)
+  getRedirectResult(auth).catch(() => {});
+
   let cur = null;
   const map = (u) => u ? { uid: u.uid, name: u.displayName || (u.isAnonymous ? "Tamu" : (u.email || "").split("@")[0]),
     email: u.email, anon: u.isAnonymous, role: localStorage.getItem("role_" + u.uid) || "pelanggan" } : null;
+
+  const POPUP_FAIL = ["auth/popup-blocked", "auth/operation-not-supported-in-this-environment",
+    "auth/cancelled-popup-request", "auth/popup-closed-by-user"];
+
   return {
     mode: "firebase",
     current: () => cur,
     onChange: (cb) => onAuthStateChanged(auth, (u) => { cur = map(u); cb(cur); }),
-    loginGoogle: () => signInWithPopup(auth, new GoogleAuthProvider()),
-    loginEmail: (e, p) => signInWithEmailAndPassword(auth, e, p),
-    async register(e, p, name) { const r = await createUserWithEmailAndPassword(auth, e, p); if (name) await updateProfile(r.user, { displayName: name }); },
-    loginAnon: () => signInAnonymously(auth),
+    async loginGoogle() {
+      const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: "select_account" });
+      try { await signInWithPopup(auth, provider); }
+      catch (e) {
+        if (POPUP_FAIL.includes(e.code)) { await signInWithRedirect(auth, provider); return; }
+        throw friendly(e);
+      }
+    },
+    async loginEmail(e, p) { try { await signInWithEmailAndPassword(auth, e, p); } catch (err) { throw friendly(err); } },
+    async register(e, p, name) {
+      try { const r = await createUserWithEmailAndPassword(auth, e, p); if (name) await updateProfile(r.user, { displayName: name }); }
+      catch (err) { throw friendly(err); }
+    },
+    async loginAnon() { try { await signInAnonymously(auth); } catch (err) { throw friendly(err); } },
     logout: () => signOut(auth),
     setRole(role) { if (cur) { localStorage.setItem("role_" + cur.uid, role); cur.role = role; } },
   };

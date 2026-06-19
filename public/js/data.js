@@ -88,11 +88,11 @@ function demoBackend() {
 
 // ---------- Firebase backend (Firestore) ----------
 async function firebaseBackend() {
-  const [{ initializeApp }, fs] = await Promise.all([
+  const [{ initializeApp, getApps }, fs] = await Promise.all([
     import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"),
     import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"),
   ]);
-  const app = initializeApp(firebaseConfig);
+  const app = getApps()[0] || initializeApp(firebaseConfig);   // hindari duplicate-app
   const db = fs.getFirestore(app);
   const { collection, doc, getDoc, getDocs, setDoc, addDoc, updateDoc, deleteDoc,
     onSnapshot, query, where, orderBy, runTransaction, serverTimestamp } = fs;
