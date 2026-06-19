@@ -41,6 +41,7 @@ Aturan penulisan log (WAJIB dibaca — mencegah konflik git antar device):
 ## 💻 Developer (Device B — Full-stack)
 
 <!-- Tulis entri terbaru tepat di bawah baris ini -->
+- [2026-06-19] (Device B) **Halaman Login & Register fungsional** + **Google sign-in AKTIF di produksi.** Isi `public/js/config.js` dgn Web SDK config quparkir → app pakai Firebase asli (Auth Google/Email/Anonymous + Firestore). Seeding lokasi non-fatal pasca-login; `firestore.rules` izinkan locations create/update utk signed-in. **Deploy ke https://quparkir.web.app** (hosting + rules). — branch: `dev`/`main` — status: ✅done
 - [2026-06-17] (Device B) **APP FULL-STACK SELESAI (batch 1) di public/.** Shell + design system (palet biru, 3 mode), router hash, data layer (DEMO localStorage + Firebase Firestore satu antarmuka), auth (Google/Email/Anonymous), peta OSM. Halaman: login, home, cari, kendaraan, check-in (anti double-parking), status realtime + e-ticket QR + smart tarif, checkout+struk, riwayat, akun (top up + ganti peran), petugas (verifikasi), admin (income/kapasitas/rekap). firestore.rules diperketat. App jalan tanpa config (mode DEMO). 19 modul lolos node --check. — branch: `dev` — status: ✅done
 - [2026-06-17] (Device B) TODO berikutnya: isi js/config.js dgn Web SDK config quparkir untuk aktifkan Firebase asli; integrasi ikon Lottie Flaticon; pembayaran QRIS nyata. — branch: `dev` — status: 🚧wip
 
