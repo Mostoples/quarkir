@@ -86,8 +86,10 @@ async function main() {
   window.addEventListener("auth:changed", () => { updateChrome(); });
 
   // reaktif: kalau status auth berubah, arahkan
-  Auth.onChange((u) => {
+  let seeded = false;
+  Auth.onChange(async (u) => {
     const path = current();
+    if (u && !seeded) { seeded = true; const { DB } = await import("./data.js"); DB.ensureSeed && DB.ensureSeed(); }
     if (!u && !AUTH_PAGES.includes(path)) go("#/login");
     if (u && AUTH_PAGES.includes(path)) go("#/home");
     updateChrome();

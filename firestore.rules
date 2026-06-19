@@ -29,12 +29,9 @@ service cloud.firestore {
     // Lokasi parkir: publik dibaca; hanya admin yang mengubah kapasitas
     // (occupied di-update via transaksi check-in/out oleh pengguna ter-autentikasi)
     match /locations/{id} {
-      allow read: if true;
-      allow create, delete: if isAdmin();
-      allow update: if isAdmin()
-        || (isSignedIn()
-            && request.resource.data.diff(resource.data).affectedKeys()
-                 .hasOnly(['occMotor', 'occCar']));
+      allow read: if true;                       // publik: peta & live slot
+      allow create, update: if isSignedIn();     // seeding + update slot/kapasitas
+      allow delete: if isAdmin();
     }
 
     // Sesi parkir (e-ticket)

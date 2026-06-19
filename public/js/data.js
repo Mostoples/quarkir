@@ -56,6 +56,7 @@ function demoBackend() {
     officers: { subscribe: (cb) => sub(x => x.officers, cb) },
     profile: { get: (u) => s.profiles[u] || null, set: (u, p) => { s.profiles[u] = { ...s.profiles[u], ...p }; emit(); } },
     wallet: { get: (u) => s.wallet[u] ?? 25000, set: (u, v) => { s.wallet[u] = v; emit(); } },
+    async ensureSeed() { /* demo sudah ter-seed di constructor */ },
 
     async checkin(u, { vehicle, locationId }) {
       if (s.sessions.some(z => z.uid === u && z.status === "active"))
@@ -96,14 +97,17 @@ async function firebaseBackend() {
   const { collection, doc, getDoc, getDocs, setDoc, addDoc, updateDoc, deleteDoc,
     onSnapshot, query, where, orderBy, runTransaction, serverTimestamp } = fs;
 
-  // seed lokasi bila kosong
-  const locSnap = await getDocs(collection(db, "locations"));
-  if (locSnap.empty) for (const l of SEED_LOCATIONS) await setDoc(doc(db, "locations", l.id), l);
-
   const colArr = (snap) => snap.docs.map(d => ({ id: d.id, ...d.data() }));
 
   return {
     mode: "firebase", _db: db,
+    // seed lokasi bila kosong — dipanggil SETELAH user login (non-fatal)
+    async ensureSeed() {
+      try {
+        const snap = await getDocs(collection(db, "locations"));
+        if (snap.empty) for (const l of SEED_LOCATIONS) { try { await setDoc(doc(db, "locations", l.id), l); } catch {} }
+      } catch {}
+    },
     locations: {
       subscribe: (cb) => onSnapshot(collection(db, "locations"), s => cb(colArr(s))),
       get: async (id) => (await getDoc(doc(db, "locations", id))).data(),
